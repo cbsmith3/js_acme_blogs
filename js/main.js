@@ -118,9 +118,16 @@ function toggleCommentButton (postId) {
 // 5.
 //
 function deleteChildElements (parentElement) {
+    const myElement = document.querySelector('parentElement');
     if (!parentElement) return undefined;
     else {
-        
+
+        //const myParentElem = document.querySelector(`${parentElement}`);
+        //if (!myParentElem) return undefined;
+        //else {
+            //return myParentElem;
+        //}
+        return parentElement;
     }
 }
 
@@ -130,12 +137,13 @@ function deleteChildElements (parentElement) {
 function addButtonListeners () {
     const allButtons = document.querySelectorAll('main.button');
     if (allButtons) {
-        
+        for (let i = 0; i < allButtons.length; i++) {
+            //let myPostID = document.allButtons[i].dataset.postId;
+        }
+        return allButtons;
     }
     //else {
-        //for (let i = 0; i < allButtons.length; i++) {
-
-        //}
+        //
         
     //}
     return allButtons;
@@ -145,7 +153,12 @@ function addButtonListeners () {
 // 7.
 //
 function removeButtonListeners () {
+    const allButtons = document.querySelectorAll('main.button');
+    if (allButtons) {
+        return allButtons;
+    }
     
+    return allButtons;
 }
 
 
@@ -154,7 +167,7 @@ function removeButtonListeners () {
 function createComments (usersComments) {
     if (!usersComments) return undefined;
     else {
-
+        return usersComments;
     }
 }
 
@@ -164,15 +177,16 @@ function createComments (usersComments) {
 function populateSelectMenu (usersData) {
     if (!usersData) return undefined;
     else {
-
+        return usersData;
     }
 }
 
 
 // 10.
 //
-function getUsers () {
-
+const getUsers = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const jsonResponse = await response.json();
 }
 
 
@@ -181,7 +195,7 @@ function getUsers () {
 function getUserPosts (userId) {
     if (!userId) return undefined;
     else {
-
+        return userId;
     }
 }
 
@@ -211,7 +225,9 @@ function getPostComments (postId) {
 function displayComments (postId) {
     if (!postId) return undefined;
     else {
-
+        const mySection = document.createElement("section");
+        mySection.dataset.postId = postId;
+        const fragment = createComments(comments);
     }
 }
 
@@ -231,7 +247,7 @@ function createPosts (postsData) {
 function displayPosts (postsData) {
     if (!postsData) return undefined;
     else {
-
+        const myMain = document.querySelector("main");
     }
 }
 
@@ -256,7 +272,7 @@ function refreshPosts (postsData) {
 // 19.
 //
 function selectMenuChangeEventHandler () {
-
+    
 }
 
 
@@ -271,6 +287,8 @@ function initPage () {
 //
 function initApp () {
     initPage ();
+    const selectMenu = document.querySelector("#selectMenu");
+    selectMenu.addEventListener("change", selectMenuChangeEventHandler);
 }
 
 document.addEventListener("DOMContentLoaded", initApp);
